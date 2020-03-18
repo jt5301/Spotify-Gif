@@ -6,10 +6,6 @@ import { connect } from 'react-redux'
  * COMPONENT
  */
 // const spotifyWebApi = new Spotify()
-
-let URI = document.documentURI
-const { access_token, refresh_token } = deparam(URI)
-console.log(access_token)
 class UserHome extends React.Component {
   constructor() {
     super()
@@ -34,18 +30,6 @@ class UserHome extends React.Component {
     )
   }
 
-}
-function deparam(querystring) {
-  // remove any preceding url and split
-  querystring = querystring.substring(querystring.indexOf('/access') + 1).split('&');
-  var params = {}, pair, d = decodeURIComponent;
-  // march and parse
-  for (var i = querystring.length - 1; i >= 0; i--) {
-    pair = querystring[i].split('=');
-    params[d(pair[0])] = d(pair[1] || '');
-  }
-
-  return params;
 };//--  fn  deparam
 /**
  * CONTAINER
