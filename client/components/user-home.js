@@ -5,18 +5,35 @@ import { connect } from 'react-redux'
 /**
  * COMPONENT
  */
-export const UserHome = props => {
-  let URI = document.documentURI
-  console.log(URI)
-  const { access_token, refresh_token } = deparam(URI)
-  console.log('access', access_token, 'refresh', refresh_token)
-  const { email } = props
+// const spotifyWebApi = new Spotify()
 
-  return (
-    <div>
-      <h3>Welcome, {email}</h3>
-    </div>
-  )
+let URI = document.documentURI
+const { access_token, refresh_token } = deparam(URI)
+console.log(access_token)
+class UserHome extends React.Component {
+  constructor() {
+    super()
+    this.state = {}
+
+  }
+  async createPlaylist() {
+    // console.log('hello')
+    // try {
+    //   let newPlaylist = await spotifyWebApi.createPlaylist('testPlaylist', { 'public': false })
+    //   console.log(newPlaylist)
+    // } catch (error) {
+    //   console.error(error)
+    // }
+  }
+  render() {
+    return (
+      <div>
+        <h3>Welcome.</h3>
+        <button type='button' onClick={() => this.createPlaylist()}>create playlist</button>
+      </div >
+    )
+  }
+
 }
 function deparam(querystring) {
   // remove any preceding url and split

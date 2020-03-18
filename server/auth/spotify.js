@@ -4,12 +4,19 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+var spotify = require('spotify-web-api-node');
 
 require('dotenv').config();
 
-var client_id = process.env.client_id;
-var client_secret = process.env.client_secret;
-var redirect_uri = process.env.redirect_uri;
+const client_id = process.env.client_id;
+const client_secret = process.env.client_secret;
+const redirect_uri = process.env.redirect_uri;
+
+var spotifyWebApi = new spotify({
+  clientId: process.env.client_id,
+  clientSecret: process.env.client_secret,
+  redirectUri: process.env.redirect_uri,
+});
 
 /**
  * Generates a random string containing numbers and letters
@@ -36,7 +43,7 @@ router.get('/login', function (req, res) {
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
   // your application requests authorization
-  var scope = 'user-read-private user-read-email';
+  var scope = 'user-read-private user-read-email playlist-modify-public playlist-modify-private';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -48,7 +55,6 @@ router.get('/login', function (req, res) {
 });
 
 router.get('/callback', async (req, res) => {
-  console.log('hello')
   // your application requests refresh and access tokens
   // after checking the state parameter
   var code = req.query.code || null;
@@ -80,7 +86,8 @@ router.get('/callback', async (req, res) => {
 
         var access_token = body.access_token,
           refresh_token = body.refresh_token;
-
+        spotifyWebApi.setAccessToken(access_token)
+        spotifyWebApi.setRefreshToken(refresh_token)
         var options = {
           url: 'https://api.spotify.com/v1/me',
           headers: { 'Authorization': 'Bearer ' + access_token },
@@ -110,8 +117,7 @@ router.get('/callback', async (req, res) => {
 
 router.get('/userinfo', async (req, res) => {
   try {
-    var result = await spotifyApi.getMe();
-    console.log(result.body);
+    var result = await spotifyWebApi.getMe();
     res.status(200).send(result.body)
   } catch (err) {
     res.status(400).send(err)
@@ -120,7 +126,7 @@ router.get('/userinfo', async (req, res) => {
 
 router.get('/playlists', async (req, res) => {
   try {
-    var result = await spotifyApi.getUserPlaylists();
+    var result = await spotifyWebApi.getUserPlaylists();
     console.log(result.body);
     res.status(200).send(result.body);
   } catch (err) {
