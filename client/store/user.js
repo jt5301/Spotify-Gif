@@ -5,8 +5,7 @@ import history from '../history'
  * ACTION TYPES
  */
 const GET_USER = 'GET_USER'
-const REMOVE_USER = 'REMOVE_USER'
-// const LOGGED_IN = 'LOGGED_IN'
+
 /**
  * INITIAL STATE
  */
@@ -16,8 +15,7 @@ const defaultUser = {}
  * ACTION CREATORS
  */
 const getUser = user => ({ type: GET_USER, user })
-const removeUser = () => ({ type: REMOVE_USER })
-// const loggedIn = () => ({ type: LOGGED_IN })
+
 
 /**
  * THUNK CREATORS
@@ -31,24 +29,18 @@ export const getInfo = () => async dispatch => {
   }
 }
 
-// export const login = () => async dispatch => {
+
+// export const logout = () => async dispatch => {
 //   try {
-//     console.log('hello')
-//     dispatch(loggedIn())
-//   } catch (dispatchOrHistoryErr) {
-//     console.error(dispatchOrHistoryErr)
+//     await axios.post('/auth/logout')
+//     dispatch(removeUser())
+//     history.push('/login')
+//   } catch (err) {
+//     console.error(err)
 //   }
 // }
 
-export const logout = () => async dispatch => {
-  try {
-    await axios.post('/auth/logout')
-    dispatch(removeUser())
-    history.push('/login')
-  } catch (err) {
-    console.error(err)
-  }
-}
+//may need history push somewhere here?
 
 /**
  * REDUCER
@@ -57,8 +49,6 @@ export default function (state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
       return { ...state, state: action.user }
-    case REMOVE_USER:
-      return defaultUser
     default:
       return state
   }

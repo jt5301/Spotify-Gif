@@ -4,5 +4,5 @@
  * having to figure out which file they belong to!
  */
 export { default as Navbar } from './navbar'
-export { default as profile } from './profile'
+export { default as Profile } from './profile'
 export { Login, Signup } from './auth-form'
