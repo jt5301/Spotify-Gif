@@ -5,7 +5,6 @@ import history from '../history'
  * ACTION TYPES
  */
 const GET_USER = 'GET_USER'
-
 /**
  * INITIAL STATE
  */
@@ -23,12 +22,23 @@ const getUser = user => ({ type: GET_USER, user })
 export const getInfo = () => async dispatch => {
   try {
     const res = await axios.get('/api/spotify/userinfo')
+    const res2 = await axios.get('/api/spotify/follows')
+    res.data.follows = res2.data
+    console.log('in thunk', res.data)
     dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
   }
 }
 
+// export const getFollows = () => async dispatch => {
+//   try {
+//     const res = await axios.get('/api/spotify/follows')
+//     dispatch(gotFollows(res.data || defaultUser))
+//   } catch (error) {
+//     console.error(error)
+//   }
+// }
 
 // export const logout = () => async dispatch => {
 //   try {
@@ -48,7 +58,8 @@ export const getInfo = () => async dispatch => {
 export default function (state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      return { ...state, state: action.user }
+      return { ...state, userState: action.user }
+
     default:
       return state
   }
