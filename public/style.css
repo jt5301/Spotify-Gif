@@ -34,3 +34,14 @@ form div {
   height:50px;
   width:50px
 }
+
+.profTrackArtistView{
+  display:flex;
+  justify-content:space-evenly
+}
+
+.trackList{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

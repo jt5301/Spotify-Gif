@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getInfo, } from '../store/user'
 import { getPlaylists } from '../store/playlists'
 import TopArtistsProfView from './topArtistsProfView'
+import TopTracksProfView from './topTracksProfView'
 
 /**
  * COMPONENT
@@ -52,9 +53,11 @@ const Profile = () => {
         <p>Following</p>
 
       </div>
+      <div className='profTrackArtistView'>
+        <TopArtistsProfView />
+        <TopTracksProfView />
+      </div>
 
-      <TopArtistsProfView />
-      {/* <TopTracksProfView /> */}
 
     </main>
   )

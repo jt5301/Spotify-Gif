@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from "react-redux";
 import { getArtists } from '../store/artists'
 
@@ -11,7 +10,6 @@ const TopArtistsProfView = () => {
   useEffect(() => {
     dispatch(getArtists(10, 'long_term'))
   }, [])
-  let limit = 0
 
 
   return (

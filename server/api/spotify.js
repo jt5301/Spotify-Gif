@@ -142,12 +142,24 @@ router.get('/topArtists/:time/:limit', async (req, res) => {
   try {
     let timeRange = req.params.time
     let limit = req.params.limit
-    console.log(timeRange)
     let result = await spotifyWebApi.getMyTopArtists({ limit: limit, time_range: timeRange })
     res.status(200).send(result.body)
   } catch (err) {
     res.status(400).send(err)
   }
 })
+
+router.get('/topTracks/:time/:limit', async (req, res) => {
+  try {
+    let timeRange = req.params.time
+    let limit = req.params.limit
+    let result = await spotifyWebApi.getMyTopTracks({ limit: limit, time_range: timeRange })
+    console.log(result)
+    res.status(200).send(result.body)
+  } catch (err) {
+    res.status(400).send(err)
+  }
+})
+
 
 module.exports = router;

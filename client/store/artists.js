@@ -34,7 +34,6 @@ export const getArtists = (limit, time) => async dispatch => {
 export default function (state = topArtists, action) {
   switch (action.type) {
     case GOT_ARTISTS:
-      console.log(action.artists)
       return { ...state, TopArtists: action.artists }
     default:
       return state
