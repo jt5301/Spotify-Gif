@@ -29,3 +29,8 @@ form div {
   display:flex;
   justify-content:space-evenly
 }
+
+.profilePhotos{
+  height:50px;
+  width:50px
+}

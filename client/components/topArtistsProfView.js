@@ -21,7 +21,7 @@ const TopArtistsProfView = () => {
         {artists ? artists.items.map((current) => {
           return (
             <div key={current.id}>
-              <img src={current.images[1].url} />
+              <img className='profilePhotos' src={current.images[1].url} />
               {current.name}
             </div>
 
