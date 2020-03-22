@@ -24,7 +24,6 @@ export const getInfo = () => async dispatch => {
     const res = await axios.get('/api/spotify/userinfo')
     const res2 = await axios.get('/api/spotify/follows')
     res.data.follows = res2.data
-    console.log('in thunk', res.data)
     dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
@@ -58,7 +57,7 @@ export const getInfo = () => async dispatch => {
 export default function (state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      return { ...state, userState: action.user }
+      return { ...state, userProfile: action.user }
 
     default:
       return state

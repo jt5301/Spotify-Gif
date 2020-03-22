@@ -43,7 +43,7 @@ router.get('/login', function (req, res) {
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
   // your application requests authorization
-  var scope = 'user-read-private playlist-modify-public playlist-modify-private playlist-read-private user-follow-read';
+  var scope = 'user-top-read user-read-private playlist-modify-public playlist-modify-private playlist-read-private user-follow-read';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -137,6 +137,17 @@ router.get('/follows', async (req, res) => {
     res.status(400).send(err)
   }
 })
-
+//long term: all time, medium term: six months, short term: 4 weeks
+router.get('/topArtists/:time/:limit', async (req, res) => {
+  try {
+    let timeRange = req.params.time
+    let limit = req.params.limit
+    console.log(timeRange)
+    let result = await spotifyWebApi.getMyTopArtists({ limit: limit, time_range: timeRange })
+    res.status(200).send(result.body)
+  } catch (err) {
+    res.status(400).send(err)
+  }
+})
 
 module.exports = router;

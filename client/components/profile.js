@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from "react-redux";
 import { getInfo, } from '../store/user'
 import { getPlaylists } from '../store/playlists'
-
+import TopArtistsProfView from './topArtistsProfView'
 
 /**
  * COMPONENT
@@ -12,7 +12,7 @@ import { getPlaylists } from '../store/playlists'
 const Profile = () => {
   const dispatch = useDispatch()
 
-  const profile = useSelector(state => state.user.userState)
+  const profile = useSelector(state => state.user.userProfile)
   const playlists = useSelector(state => state.playlists.state)
   /* analogous to :
   const mapState = state => {
@@ -23,24 +23,39 @@ const Profile = () => {
     dispatch(getInfo())
     dispatch(getPlaylists())
   }, [])//similar to calling a dispatch in componentdidmount
-  console.log(profile)
   return (
     <main>
-      <h3>Welcome {profile ? profile.display_name : ''}</h3>
-      <a href='https://accounts.spotify.com/en/status'>LogOut</a>
-      <div>
-        <img src={profile ? profile.images[0].url : ''} />
+      <div >
+        <div className='profile'>
+          <img src={profile ? profile.images[0].url : ''} />
+        </div>
+
+        <div className='profile'>
+          <h3>{profile ? profile.display_name : ''}</h3>
+        </div>
+
+        <div className='profile'>
+          <a href='https://accounts.spotify.com/en/status'>LOGOUT</a>
+        </div>
+
+      </div>
+
+      <div className='profileRow'>
         <p>{playlists ? playlists.total : ''}</p>
-        <p>playlists:</p>
-      </div>
-      <div>
         <p>{profile ? profile.followers.total : ''}</p>
-        <p>Followers</p>
-      </div>
-      <div>
         <p>{profile ? profile.follows.artists.items.length : ''}</p>
-        <p>Following</p>
       </div>
+
+      <div className='profileRow'>
+        <p>playlists</p>
+        <p>Followers</p>
+        <p>Following</p>
+
+      </div>
+
+      <TopArtistsProfView />
+      {/* <TopTracksProfView /> */}
+
     </main>
   )
 }
