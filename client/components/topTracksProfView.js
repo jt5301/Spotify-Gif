@@ -10,7 +10,6 @@ const TopTracksProfView = () => {
   useEffect(() => {
     dispatch(getTracks(10, 'long_term'))
   }, [])
-  console.log(tracks)
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { logout } from '../store'
 import styled from 'styled-components'
 
@@ -13,7 +13,12 @@ const Button = styled.button`
   margin: 0 1em;
   padding: 0.25em 1em;
 `
+
+
 const Nav = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   flex-direction: column;
   justify-content:space-between;
   min-height: 100vh;
@@ -26,10 +31,51 @@ const Nav = styled.nav`
   z-index: 99;
 `;
 
+const MainNav = styled.nav`
+  display:flex;
+  flex-direction:column;
+`
+
+const MenuItem = styled.li`
+  color: grey;
+  font-size: 11px;
+
+  a {
+    display: block;
+    padding: 15px 0;
+    border-left: 5px solid transparent;
+    width: 100%;
+    height: 100%;
+    &:hover,
+    &:focus,
+    &.active {
+      color: white;
+      background-color: black;
+      border-left: 5px solid green;
+
+    }
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 7px;
+  }
+`;
 
 const Navbar = () => (
   <Nav>
     <Button>test</Button>
+    <MainNav>
+
+      <MenuItem>
+        <NavLink to='/profile'>
+          Profile
+      </NavLink>
+      </MenuItem>
+
+      <Button>test</Button>
+      <Button>test</Button>
+    </MainNav>
     <Button>test</Button>
   </Nav>
 );
