@@ -46,11 +46,12 @@ const MenuItem = styled.li`
     border-left: 5px solid transparent;
     width: 100%;
     height: 100%;
+    transition: 0.3s;
     &:hover,
     &:focus,
     &.active {
       color: white;
-      background-color: black;
+      background-color: grey;
       border-left: 5px solid green;
 
     }
