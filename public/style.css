@@ -1,3 +1,5 @@
+
+
 body {
   font-family: Proxima-Nova;
 }
@@ -45,3 +47,8 @@ form div {
   flex-direction: column;
   justify-content: space-between;
 }
+
+/* .navBar{
+  display:flex;
+  flex-direction: column;
+} */
