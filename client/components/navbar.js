@@ -14,8 +14,8 @@ const Button = styled.button`
   padding: 0.25em 1em;
 `
 const Nav = styled.nav`
-
   flex-direction: column;
+  justify-content:space-between;
   min-height: 100vh;
   position: fixed;
   top: 0;
