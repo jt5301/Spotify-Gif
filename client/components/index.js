@@ -6,3 +6,5 @@
 export { default as Navbar } from './navbar'
 export { default as Profile } from './profile'
 export { Login, Signup } from './auth-form'
+export { default as Artists } from './artist'
+export { default as Tracks } from './tracks'

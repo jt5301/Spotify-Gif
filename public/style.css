@@ -48,7 +48,15 @@ form div {
   justify-content: space-between;
 }
 
-/* .navBar{
+.artistHeader{
   display:flex;
-  flex-direction: column;
-} */
+  justify-content:space-evenly
+}
+
+.timebar{
+  display:flex;
+  flex-direction:row;
+  justify-content:space evenly
+}
+
+

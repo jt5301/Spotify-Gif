@@ -22,7 +22,6 @@ const gotTracks = tracks => ({ type: GOT_TRACKS, tracks })
 export const getTracks = (limit, time) => async dispatch => {
   try {
     const res = await axios.get(`/api/spotify/topTracks/${time}/${limit}`)
-    console.log(res)
     dispatch(gotTracks(res.data || defaultUser))
   } catch (err) {
     console.error(err)

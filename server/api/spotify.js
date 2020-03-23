@@ -154,7 +154,6 @@ router.get('/topTracks/:time/:limit', async (req, res) => {
     let timeRange = req.params.time
     let limit = req.params.limit
     let result = await spotifyWebApi.getMyTopTracks({ limit: limit, time_range: timeRange })
-    console.log(result)
     res.status(200).send(result.body)
   } catch (err) {
     res.status(400).send(err)

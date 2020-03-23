@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, NavLink } from 'react-router-dom'
-import { logout } from '../store'
 import styled from 'styled-components'
 
 
@@ -28,7 +27,6 @@ const Nav = styled.nav`
   width: 100px;
   background-color: #040306;
   text-align: center;
-  z-index: 99;
 `;
 
 const MainNav = styled.nav`
@@ -74,8 +72,18 @@ const Navbar = () => (
       </NavLink>
       </MenuItem>
 
-      <Button>test</Button>
-      <Button>test</Button>
+      <MenuItem>
+        <NavLink to='/artists'>
+          Artists
+      </NavLink>
+      </MenuItem>
+
+      <MenuItem>
+        <NavLink to='/tracks'>
+          Tracks
+      </NavLink>
+      </MenuItem>
+
     </MainNav>
     <Button>test</Button>
   </Nav>
