@@ -1,9 +1,20 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { getTracks } from '../store/tracks'
+import styled from 'styled-components'
 
 const Tracks = () => {
   const dispatch = useDispatch()
+
+  const SingleTrack = styled.a`
+    flex-direction: row;
+    display: grid;
+    justify-content: space-between;
+    align-items:center;
+    grid-template-columns: 100px 500px 250px 40px;
+    padding: 10px 10px 10px 10px
+  `
+
 
   const tracks = useSelector(state => state.tracks.topTracks)
   useEffect(() => {
@@ -23,13 +34,21 @@ const Tracks = () => {
       <div>
         Top Tracks
       <div className='trackList'>
+          <SingleTrack>
+            <div>Album Art</div>
+            <div>Song Name</div>
+            <div>Artist</div>
+            <div>Duration</div>
+          </SingleTrack>
           {tracks ? tracks.items.map((current) => {
             return (
-              <div key={current.id}>
+              <SingleTrack trackMap key={current.id}>
+
                 <img className='profilePhotos' src={current.album.images[1].url} />
-                {current.name}
-                {millisToMinutesAndSeconds(current.duration_ms)}
-              </div>
+                <div>{current.name}</div>
+                <div>{current.artists[0].name}</div>
+                <div>{millisToMinutesAndSeconds(current.duration_ms)}</div>
+              </SingleTrack>
 
             )
           }) : ''}

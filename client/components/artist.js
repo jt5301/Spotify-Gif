@@ -1,9 +1,29 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { getArtists } from '../store/artists'
+import styled from 'styled-components'
+
 
 const Artists = () => {
   const dispatch = useDispatch()
+
+  const ArtistItem = styled.a`
+  display:flex;
+  flex-direction:column;
+  background-color: grey;
+  border-radius: 25px;
+  `
+  const ArtistPortrait = styled.img`
+  border-radius:50%;
+  width:200px;
+  height:200px;
+  `
+
+  const ArtistLink = styled.div`
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+  `
 
   const artists = useSelector(state => state.artists.TopArtists)
   useEffect(() => {
@@ -11,8 +31,6 @@ const Artists = () => {
   }, [])
   return (
     <main>
-
-
       <header className='artistHeader'>
         <h3>Top Artists</h3>
         <div className='timebar'>
@@ -25,10 +43,15 @@ const Artists = () => {
         <div className='topArtists'>
           {artists ? artists.items.map((current) => {
             return (
-              <div key={current.id}>
-                <img className='profilePhotos' src={current.images[1].url} />
-                {current.name}
-              </div>
+              <ArtistItem key={current.id} href={`/artist/${current.id}`}>
+                <ArtistPortrait src={current.images[1].url} />
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  margin: '10px',
+
+                }}>{current.name}</div>
+              </ArtistItem>
 
             )
           }) : ''}
@@ -37,7 +60,7 @@ const Artists = () => {
 
 
 
-    </main>
+    </main >
   )
 }
 
