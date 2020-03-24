@@ -22,7 +22,7 @@ const Artists = () => {
         </div>
       </header>
       <div>
-        <div className='artistList'>
+        <div className='topArtists'>
           {artists ? artists.items.map((current) => {
             return (
               <div key={current.id}>

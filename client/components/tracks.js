@@ -12,8 +12,6 @@ const Tracks = () => {
   console.log('in component', tracks)
   return (
     <main>
-
-
       <header className='artistHeader'>
         <h3>Top Tracks</h3>
         <div className='timebar'>
