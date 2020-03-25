@@ -56,6 +56,7 @@ const Profile = () => {
       <div className='profTrackArtistView'>
         <TopArtistsProfView />
         <TopTracksProfView />
+
       </div>
 
 

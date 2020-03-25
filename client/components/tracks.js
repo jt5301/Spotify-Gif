@@ -12,7 +12,7 @@ const Tracks = () => {
     justify-content: space-between;
     align-items:center;
     grid-template-columns: 100px 500px 250px 40px;
-    padding: 10px 10px 10px 10px
+    margin: 10px 10px 10px 10px
   `
 
 
@@ -32,8 +32,7 @@ const Tracks = () => {
         </div>
       </header>
       <div>
-        Top Tracks
-      <div className='trackList'>
+        <div className='trackList'>
           <SingleTrack>
             <div>Album Art</div>
             <div>Song Name</div>
