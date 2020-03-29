@@ -22,7 +22,8 @@ const TopTracksProfView = () => {
   display: grid;
   justify-content: space-between;
   align-items:center;
-  grid-template-columns: 100px 500px 250px 40px;
+  grid-template-columns: 100px 500px 20px;
+  grid-template-columns: 100px 500px 20px;
   margin: 10px 10px 10px 10px
   `
   console.log(tracks)
@@ -38,12 +39,11 @@ const TopTracksProfView = () => {
           return (
             <SingleTrack key={current.id}>
               <img className='profilePhotos' src={current.album.images[1].url} />
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column'
-              }}>
-                {current.name} -
-                {current.artists[0].name}
+              <div>
+                {current.name}
+                <div>
+                  {current.album.name} - {current.artists[0].name}
+                </div>
               </div>
               {millisToMinutesAndSeconds(current.duration_ms)}
             </SingleTrack>
