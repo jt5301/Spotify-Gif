@@ -2,6 +2,8 @@
 
 body {
   font-family: Proxima-Nova;
+  background-color:#171717;
+  color:#ffffff
   /* width: 100%;
     max-width: 1400px;
     min-height: 100vh;
@@ -34,6 +36,7 @@ form div {
 .profile{
   display:flex;
   justify-content: center;
+
 }
 
 .profileRow{
@@ -43,7 +46,7 @@ form div {
 
 .profilePhotos{
   height:75px;
-  width:75px
+  width:75px;
 }
 
 .profTrackArtistView{

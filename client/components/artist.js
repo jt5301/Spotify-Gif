@@ -10,19 +10,16 @@ const Artists = () => {
   const ArtistItem = styled.a`
   display:flex;
   flex-direction:column;
-  background-color: grey;
+  background-color: #272727;
   border-radius: 25px;
+  color:white;
+  align-items:center;
+  padding:10px;
   `
   const ArtistPortrait = styled.img`
   border-radius:50%;
-  width:200px;
-  height:200px;
-  `
-
-  const ArtistLink = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: 10px;
+  width:150px;
+  height:150px;
   `
 
   const artists = useSelector(state => state.artists.TopArtists)

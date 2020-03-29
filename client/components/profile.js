@@ -27,11 +27,11 @@ const Profile = () => {
   return (
     <main>
       <div >
-        <div className='profile'>
-          <img src={profile ? profile.images[0].url : ''} />
+        <div className='profile' >
+          <img style={{ borderRadius: '50%' }} src={profile ? profile.images[0].url : ''} />
         </div>
 
-        <div className='profile'>
+        <div className='profile' >
           <h3>{profile ? profile.display_name : ''}</h3>
         </div>
 
