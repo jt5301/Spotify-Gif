@@ -26,7 +26,6 @@ const TopTracksProfView = () => {
   grid-template-columns: 100px 500px 20px;
   margin: 10px 10px 10px 10px
   `
-  console.log(tracks)
   return (
     <div style={{ width: '25%' }}>
       <Header>

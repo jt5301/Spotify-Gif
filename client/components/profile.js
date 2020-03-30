@@ -15,6 +15,7 @@ const Profile = () => {
 
   const profile = useSelector(state => state.user.userProfile)
   const playlists = useSelector(state => state.playlists.state)
+  console.log('profile', profile)
   /* analogous to :
   const mapState = state => {
   return {
