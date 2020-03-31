@@ -5,7 +5,7 @@ import { CategoryFont } from '../../public/styling/fonts'
 import styled from 'styled-components'
 
 
-const Artists = () => {
+const Playlists = () => {
   const dispatch = useDispatch()
 
   const ArtistItem = styled.a`
@@ -31,12 +31,8 @@ const Artists = () => {
   return (
     <main>
       <header className='categoryHeader'>
-        <CategoryFont>Top Artists</CategoryFont>
-        <div className='timebar'>
-          <button onClick={() => dispatch(getArtists(50, 'long_term'))}>All Time</button>
-          <button onClick={() => dispatch(getArtists(50, 'medium_term'))}>Last Six Months</button>
-          <button onClick={() => dispatch(getArtists(50, 'short_term'))}>Last Four Weeks</button>
-        </div>
+        <CategoryFont> All Playlists</CategoryFont>
+        <div></div>
       </header>
       <div>
         <div className='topArtists'>
@@ -59,5 +55,4 @@ const Artists = () => {
     </main>
   )
 }
-
-export default Artists
+export default Playlists

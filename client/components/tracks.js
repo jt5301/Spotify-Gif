@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { getTracks } from '../store/tracks'
+import { CategoryFont } from '../../public/styling/fonts'
 import styled from 'styled-components'
 
 const Tracks = () => {
@@ -9,9 +10,9 @@ const Tracks = () => {
   const SingleTrack = styled.a`
     flex-direction: row;
     display: grid;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items:center;
-    grid-template-columns: 100px 500px 250px 40px;
+    grid-template-columns: 75px 200px 100px 10px;
     margin: 10px 10px 10px 10px
   `
 
@@ -23,8 +24,8 @@ const Tracks = () => {
   console.log('in component', tracks)
   return (
     <main>
-      <header className='artistHeader'>
-        <h3>Top Tracks</h3>
+      <header className='categoryHeader'>
+        <CategoryFont>Top Tracks</CategoryFont>
         <div className='timebar'>
           <button onClick={() => dispatch(getTracks(50, 'long_term'))}>All Time</button>
           <button onClick={() => dispatch(getTracks(50, 'medium_term'))}>Last Six Months</button>

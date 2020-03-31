@@ -33,31 +33,33 @@ const MainNav = styled.nav`
   flex-direction:column;
 `
 
-const MenuItem = styled.li`
+const MenuItem = styled.ul`
+padding-inline-start: 0px;
   color: grey;
-  font-size: 11px;
-
+  font-size: 13px;
   a {
-    display: block;
-    padding: 15px 0;
-    border-left: 5px solid transparent;
-    width: 100%;
+    display: flex;
+    padding: 15px;
+    justify-content:center;
+    ${'' /* border-left: 5px solid transparent; */}
+    ${'' /* width: 100%; */}
     height: 100%;
     transition: 0.3s;
+    color:grey;
     &:hover,
-    &:focus,
-    &.active {
+    &:focus{
       color: white;
       background-color: grey;
-      border-left: 5px solid green;
-
+    }
+    &.active{
+      background-color:green
     }
   }
-  svg {
+  ${'' /* svg {
     width: 20px;
     height: 20px;
     margin-bottom: 7px;
-  }
+  } */}
 `;
 
 const Navbar = () => (
@@ -80,6 +82,12 @@ const Navbar = () => (
       <MenuItem>
         <NavLink to='/tracks'>
           Tracks
+      </NavLink>
+      </MenuItem>
+
+      <MenuItem>
+        <NavLink to='/playlists'>
+          Playlists
       </NavLink>
       </MenuItem>
 

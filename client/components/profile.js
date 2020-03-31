@@ -5,6 +5,7 @@ import { getInfo, } from '../store/user'
 import { getPlaylists } from '../store/playlists'
 import TopArtistsProfView from './topArtistsProfView'
 import TopTracksProfView from './topTracksProfView'
+import { HeaderFont } from '../../public/styling/fonts'
 
 /**
  * COMPONENT
@@ -15,25 +16,24 @@ const Profile = () => {
 
   const profile = useSelector(state => state.user.userProfile)
   const playlists = useSelector(state => state.playlists.state)
-  console.log('profile', profile)
   /* analogous to :
   const mapState = state => {
   return {
   state: state.user.state   }*/
-
   useEffect(() => {
     dispatch(getInfo())
     dispatch(getPlaylists())
   }, [])//similar to calling a dispatch in componentdidmount
   return (
     <main>
-      <div >
+      <div>
         <div className='profile' >
-          <img style={{ borderRadius: '50%' }} src={profile ? profile.images[0].url : ''} />
+          <img className='profilePortrait'
+            src={profile ? profile.images[0].url : ''} />
         </div>
 
         <div className='profile' >
-          <h3>{profile ? profile.display_name : ''}</h3>
+          <HeaderFont>{profile ? profile.display_name : ''}</HeaderFont>
         </div>
 
         <div className='profile'>
@@ -49,7 +49,7 @@ const Profile = () => {
       </div>
 
       <div className='profileRow'>
-        <p>playlists</p>
+        <p>Playlists</p>
         <p>Followers</p>
         <p>Following</p>
 
