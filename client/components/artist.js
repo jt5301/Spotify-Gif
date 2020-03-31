@@ -16,6 +16,10 @@ const Artists = () => {
   color:white;
   padding:10px;
   align-items:center;
+  transition: 0.3s;
+  &:hover{
+    background-color: #1DB954;
+  }
   `
 
   const ArtistPortrait = styled.img`

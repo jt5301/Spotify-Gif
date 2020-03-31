@@ -4,12 +4,12 @@ import history from '../history'
 /**
  * ACTION TYPES
  */
-const GOT_PLAYLISTS = 'GET_PLAYLISTS'
+const GOT_PLAYLISTS = 'GOT_PLAYLISTS'
 
 /**
  * INITIAL STATE
  */
-const playlists = {}
+const allPlaylists = {}
 
 /**
  * ACTION CREATORS
@@ -22,7 +22,8 @@ const gotPlaylists = playlists => ({ type: GOT_PLAYLISTS, playlists })
 export const getPlaylists = () => async dispatch => {
   try {
     const res = await axios.get('/api/spotify/playlists')
-    dispatch(gotPlaylists(res.data || defaultUser))
+
+    dispatch(gotPlaylists(res.data.items || defaultUser))
   } catch (err) {
     console.error(err)
   }
@@ -31,10 +32,10 @@ export const getPlaylists = () => async dispatch => {
 /**
  * REDUCER
  */
-export default function (state = playlists, action) {
+export default function (state = allPlaylists, action) {
   switch (action.type) {
     case GOT_PLAYLISTS:
-      return { ...state, state: action.playlists }
+      return { ...state, allPlaylists: action.playlists }
     default:
       return state
   }

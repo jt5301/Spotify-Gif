@@ -18,13 +18,15 @@ const TopTracksProfView = () => {
     justify-content:space-between;
   `
   const SingleTrack = styled.a`
-  flex-direction: row;
   display: grid;
-  justify-content: space-between;
   align-items:center;
-  grid-template-columns: 100px 500px 20px;
-  grid-template-columns: 100px 500px 20px;
-  margin: 10px 10px 10px 10px
+  grid-template-columns: 100px 260px auto;
+  margin: 10px 10px 10px 10px;
+  transition: 0.3s;
+  background-color: #272727;
+  &:hover{
+    background-color: #1DB954;
+  }
   `
   return (
     <div style={{ width: '25%' }}>
@@ -38,13 +40,19 @@ const TopTracksProfView = () => {
           return (
             <SingleTrack key={current.id}>
               <img className='profilePhotos' src={current.album.images[1].url} />
-              <div>
+              <div >
                 {current.name}
-                <div>
+                <div style={{
+                  color: '#B3B3B3',
+                  fontSize: '12px',
+                }}>
                   {current.album.name} - {current.artists[0].name}
                 </div>
               </div>
-              {millisToMinutesAndSeconds(current.duration_ms)}
+              <div style={{
+                color: '#B3B3B3',
+                fontSize: '12px'
+              }}>{millisToMinutesAndSeconds(current.duration_ms)}</div>
             </SingleTrack>
 
           )

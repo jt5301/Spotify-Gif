@@ -17,11 +17,15 @@ const TopArtistsProfView = () => {
     justify-content:space-between;
   `
   const SingleArtist = styled.a`
-  flex-direction: row;
   display: grid;
   justify-content: space-between;
+  background-color: #272727;
+  transition: 0.3s;
+  &:hover{
+    background-color: #1DB954;
+  }
   align-items:center;
-  grid-template-columns: 100px 500px 250px 40px;
+  grid-template-columns: 100px 300px;
   margin: 10px 10px 10px 10px
 `
 

@@ -8,12 +8,15 @@ const Tracks = () => {
   const dispatch = useDispatch()
 
   const SingleTrack = styled.a`
-    flex-direction: row;
     display: grid;
     justify-content: space-evenly;
     align-items:center;
     grid-template-columns: 75px 200px 100px 10px;
-    margin: 10px 10px 10px 10px
+    margin: 10px 10px 10px 10px;
+    &:hover{
+      text-decoration: underline;
+  }
+
   `
 
 
@@ -34,12 +37,18 @@ const Tracks = () => {
       </header>
       <div>
         <div className='trackList'>
-          <SingleTrack>
+          <div style={{
+            display: 'grid',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
+            gridTemplateColumns: '75px 200px 100px 10px',
+            margin: '10px 10px 10px 10px'
+          }}>
             <div>Album Art</div>
             <div>Song Name</div>
             <div>Artist</div>
             <div>Duration</div>
-          </SingleTrack>
+          </div>
           {tracks ? tracks.items.map((current) => {
             return (
               <SingleTrack trackMap key={current.id}>

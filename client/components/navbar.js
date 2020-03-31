@@ -52,7 +52,7 @@ padding-inline-start: 0px;
       background-color: grey;
     }
     &.active{
-      background-color:green
+      background-color:#1DB954
     }
   }
   ${'' /* svg {

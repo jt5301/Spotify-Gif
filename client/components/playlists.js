@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { getArtists } from '../store/artists'
+import { getPlaylists } from '../store/playlists'
 import { CategoryFont } from '../../public/styling/fonts'
 import styled from 'styled-components'
 
@@ -8,26 +8,30 @@ import styled from 'styled-components'
 const Playlists = () => {
   const dispatch = useDispatch()
 
-  const ArtistItem = styled.a`
+  const PlaylistItem = styled.a`
   display:flex;
   flex-direction:column;
   background-color: #272727;
-  border-radius: 25px;
   color:white;
   padding:10px;
   align-items:center;
+  border-radius: 25px;
+  transition: 0.3s;
+  &:hover{
+    background-color: #1DB954;
+  }
   `
 
   const ArtistPortrait = styled.img`
-  border-radius:50%;
   width:150px;
   height:150px;
   `
 
-  const artists = useSelector(state => state.artists.TopArtists)
+  const playlists = useSelector(state => state.playlists.allPlaylists)
   useEffect(() => {
-    dispatch(getArtists(50, 'long_term'))
+    dispatch(getPlaylists())
   }, [])
+  console.log(playlists)
   return (
     <main>
       <header className='categoryHeader'>
@@ -36,17 +40,23 @@ const Playlists = () => {
       </header>
       <div>
         <div className='topArtists'>
-          {artists ? artists.items.map((current) => {
+          {playlists ? playlists.map((current) => {
             return (
-              <ArtistItem key={current.id} href={`/artist/${current.id}`}>
-                <ArtistPortrait src={current.images[1].url} />
+              <PlaylistItem key={current.id} href={`/playlist/${current.id}`}>
+                <ArtistPortrait src={current.images[0].url} />
                 <div style={{
                   display: 'flex',
                   justifyContent: 'center',
                   margin: '10px',
 
-                }}>{current.name}</div>
-              </ArtistItem>
+                }}>
+                  {current.name}
+                </div>
+                <div style={{
+                  color: '#B3B3B3',
+                  fontSize: '12px',
+                }}>{current.tracks.total} songs</div>
+              </PlaylistItem>
 
             )
           }) : ''}
