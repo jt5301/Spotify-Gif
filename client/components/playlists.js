@@ -31,7 +31,6 @@ const Playlists = () => {
   useEffect(() => {
     dispatch(getPlaylists())
   }, [])
-  console.log(playlists)
   return (
     <main>
       <header className='categoryHeader'>

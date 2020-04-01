@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
-import { Login, Profile, Artists, Tracks, Playlists } from './components'
+import { Login, Profile, Artists, Tracks, Playlists, ArtistProfile, TrackInfo } from './components'
 
 /**
  * COMPONENT
@@ -20,8 +20,11 @@ class Routes extends Component {
         <Route path="/login" component={Login} />
         <Route path="/profile" component={Profile} />
         <Route path='/artists' component={Artists} />
+        <Route path='/artist/:id' component={ArtistProfile} />
         <Route path='/tracks' component={Tracks} />
+        <Route path='/track/:id' component={TrackInfo} />
         <Route path='/playlists' component={Playlists} />
+
         {/* {isLoggedIn && (
           <Switch>
             {/* Routes placed here are only available after logging in */}

@@ -169,5 +169,14 @@ router.get('/playlists', async (req, res) => {
   }
 })
 
+router.get('/artist/:id', async (req, res) => {
+  try {
+    let result = await spotifyWebApi.getArtist(req.params.id)
+    res.status(200).send(result.body)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 
 module.exports = router;

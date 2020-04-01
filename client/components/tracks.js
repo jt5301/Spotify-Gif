@@ -24,7 +24,6 @@ const Tracks = () => {
   useEffect(() => {
     dispatch(getTracks(50, 'long_term'))
   }, [])
-  console.log('in component', tracks)
   return (
     <main>
       <header className='categoryHeader'>

@@ -52,7 +52,8 @@ padding-inline-start: 0px;
       background-color: grey;
     }
     &.active{
-      background-color:#1DB954
+      background-color:#1DB954;
+      color:white
     }
   }
   ${'' /* svg {
@@ -75,13 +76,13 @@ const Navbar = () => (
 
       <MenuItem>
         <NavLink to='/artists'>
-          Artists
+          Top Artists
       </NavLink>
       </MenuItem>
 
       <MenuItem>
         <NavLink to='/tracks'>
-          Tracks
+          Top Tracks
       </NavLink>
       </MenuItem>
 

@@ -9,3 +9,5 @@ export { Login, Signup } from './auth-form'
 export { default as Artists } from './artist'
 export { default as Tracks } from './tracks'
 export { default as Playlists } from './playlists'
+export { default as ArtistProfile } from './singleArtist'
+

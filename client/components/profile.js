@@ -15,7 +15,7 @@ const Profile = () => {
   const dispatch = useDispatch()
 
   const profile = useSelector(state => state.user.userProfile)
-  const playlists = useSelector(state => state.playlists.state)
+  const playlists = useSelector(state => state.playlists.allPlaylists)
   /* analogous to :
   const mapState = state => {
   return {
@@ -43,7 +43,7 @@ const Profile = () => {
       </div>
 
       <div className='profileRow'>
-        <p>{playlists ? playlists.total : ''}</p>
+        <p>{playlists ? playlists.length : ''}</p>
         <p>{profile ? profile.followers.total : ''}</p>
         <p>{profile ? profile.follows.artists.items.length : ''}</p>
       </div>

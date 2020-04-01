@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { getArtists } from '../store/artists'
 import styled from 'styled-components'
@@ -33,7 +34,7 @@ const TopArtistsProfView = () => {
     <div style={{ width: '25%' }}>
       <Header>
         <h3>Top Artists of All Time</h3>
-        <h3>See More</h3>
+        <NavLink className='seeMore' to='/artists'>See More</NavLink>
       </Header>
       <div className='artistList'>
         {artists ? artists.items.map((current) => {

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { getTracks } from '../store/tracks'
 import styled from 'styled-components'
@@ -32,7 +33,7 @@ const TopTracksProfView = () => {
     <div style={{ width: '25%' }}>
       <Header>
         <h3>Top Tracks of All Time</h3>
-        <h3>See More</h3>
+        <NavLink className='seeMore' to='/tracks'>See More</NavLink>
       </Header>
 
       <div>
@@ -48,13 +49,14 @@ const TopTracksProfView = () => {
                 }}>
                   {current.album.name} - {current.artists[0].name}
                 </div>
+                <div style={{
+                  color: '#B3B3B3',
+                  fontSize: '12px'
+                }}>{millisToMinutesAndSeconds(current.duration_ms)}
+                </div>
               </div>
-              <div style={{
-                color: '#B3B3B3',
-                fontSize: '12px'
-              }}>{millisToMinutesAndSeconds(current.duration_ms)}</div>
-            </SingleTrack>
 
+            </SingleTrack>
           )
         }) : ''}
       </div>

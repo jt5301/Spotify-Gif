@@ -180,6 +180,11 @@ form div {
   justify-content:space evenly
 }
 
+.seeMore{
+  color:white;
+  font-size: 15px;
+}
+
 .topArtists{
   display: grid;
   grid-template-columns: repeat(auto-fit, 200px [col-start]);
