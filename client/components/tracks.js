@@ -11,6 +11,7 @@ const Tracks = () => {
     display: grid;
     justify-content: space-evenly;
     align-items:center;
+    color:white;
     grid-template-columns: 75px 200px 100px 10px;
     margin: 10px 10px 10px 10px;
     &:hover{
@@ -50,7 +51,7 @@ const Tracks = () => {
           </div>
           {tracks ? tracks.items.map((current) => {
             return (
-              <SingleTrack trackMap key={current.id}>
+              <SingleTrack href={`/track/${current.id}`} key={current.id}>
 
                 <img className='profilePhotos' src={current.album.images[1].url} />
                 <div>{current.name}</div>

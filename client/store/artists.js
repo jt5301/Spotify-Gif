@@ -32,7 +32,6 @@ export const getArtists = (limit, time) => async dispatch => {
 export const getSingleArtist = (id) => async dispatch => {
   try {
     const res = await axios.get(`/api/spotify/artist/${id}`)
-    console.log('after get', res)
     dispatch(gotSingleArtist(res.data))
   } catch (error) {
     console.error

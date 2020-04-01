@@ -46,7 +46,7 @@ const Artists = () => {
         <div className='topArtists'>
           {artists ? artists.items.map((current) => {
             return (
-              <ArtistItem key={current.id} artistId={current.id} href={`/artist/${current.id}`}>
+              <ArtistItem key={current.id} href={`/artist/${current.id}`}>
                 <ArtistPortrait src={current.images[1].url} />
                 <div style={{
                   display: 'flex',

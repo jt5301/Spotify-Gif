@@ -10,4 +10,5 @@ export { default as Artists } from './artist'
 export { default as Tracks } from './tracks'
 export { default as Playlists } from './playlists'
 export { default as ArtistProfile } from './singleArtist'
+export { default as TrackProfile } from './singleTrack'
 

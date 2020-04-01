@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Route, Switch } from 'react-router-dom'
-import { Login, Profile, Artists, Tracks, Playlists, ArtistProfile, TrackInfo } from './components'
+import { Login, Profile, Artists, Tracks, Playlists, ArtistProfile, TrackProfile } from './components'
 
 /**
  * COMPONENT
@@ -22,7 +22,7 @@ class Routes extends Component {
         <Route path='/artists' component={Artists} />
         <Route path='/artist/:id' component={ArtistProfile} />
         <Route path='/tracks' component={Tracks} />
-        <Route path='/track/:id' component={TrackInfo} />
+        <Route path='/track/:id' component={TrackProfile} />
         <Route path='/playlists' component={Playlists} />
 
         {/* {isLoggedIn && (

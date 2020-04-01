@@ -22,6 +22,7 @@ const TopArtistsProfView = () => {
   justify-content: space-between;
   background-color: #272727;
   transition: 0.3s;
+  color:white;
   &:hover{
     background-color: #1DB954;
   }
@@ -39,7 +40,7 @@ const TopArtistsProfView = () => {
       <div className='artistList'>
         {artists ? artists.items.map((current) => {
           return (
-            <SingleArtist key={current.id}>
+            <SingleArtist href={`/artist/${current.id}`} key={current.id}>
               <img className='profilePhotos' src={current.images[1].url} />
               {current.name}
             </SingleArtist>

@@ -25,6 +25,7 @@ const TopTracksProfView = () => {
   margin: 10px 10px 10px 10px;
   transition: 0.3s;
   background-color: #272727;
+  color:white;
   &:hover{
     background-color: #1DB954;
   }
@@ -39,7 +40,7 @@ const TopTracksProfView = () => {
       <div>
         {tracks ? tracks.items.map((current) => {
           return (
-            <SingleTrack key={current.id}>
+            <SingleTrack href={`track/${current.id}`} key={current.id}>
               <img className='profilePhotos' src={current.album.images[1].url} />
               <div >
                 {current.name}
