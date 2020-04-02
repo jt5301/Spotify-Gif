@@ -25,6 +25,7 @@ const TopArtistsProfView = () => {
   color:white;
   &:hover{
     background-color: #1DB954;
+    text-decoration: underline;
   }
   align-items:center;
   grid-template-columns: 100px 300px;

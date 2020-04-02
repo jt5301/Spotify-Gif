@@ -183,6 +183,10 @@ form div {
 .seeMore{
   color:white;
   font-size: 15px;
+
+}
+.seeMore:hover{
+  text-decoration: underline  ;
 }
 
 .topArtists{

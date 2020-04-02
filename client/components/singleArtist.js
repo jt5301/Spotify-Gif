@@ -13,7 +13,6 @@ const ArtistProfile = (props) => {
   useEffect(() => {
     dispatch(getSingleArtist(artistId))
   }, [])
-  console.log('what is this', artist)
   return (<div>HELLOLOLOLOLOOLO</div>)
   // const dispatch = useDispatch()
 

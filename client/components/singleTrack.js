@@ -15,7 +15,7 @@ const TrackProfile = (props) => {
     dispatch(getSingleTrack(trackId))
   }, [])
   console.log('what is this', track)
-  return (<div>HELLOLOLOLOLOOLO</div>)
+  return (<div>HELLO</div>)
   // const dispatch = useDispatch()
 
   // const artistProfile = useSelector(state => state.artists.SingleArtist)
