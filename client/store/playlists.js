@@ -35,8 +35,27 @@ export const getPlaylists = () => async dispatch => {
 export const getSinglePlaylist = (id) => async dispatch => {
   try {
     const res = await axios.get(`/api/spotify/playlist/${id}`)
+    let playlist = res.data
+    let songIds = []
+    playlist.tracks.items.forEach((current) => {
+      songIds.push(current.track.id)
+    })
+    const playlistInfo = await axios.post('/api/spotify/playlistDetail', songIds)
 
-    dispatch(gotSinglePlaylist(res.data))
+
+    let danceability = 0, energy = 0, acousticness = 0, instrumentalness = 0, liveness = 0, speechiness = 0, valence = 0
+
+    playlistInfo.data.audio_features.forEach((current) => {
+      danceability += current.danceability
+      energy += current.energy
+      acousticness += current.acousticness
+      instrumentalness += current.instrumentalness
+      liveness += current.liveness
+      speechiness += current.speechiness
+      valence += current.valence
+    })
+    playlist.info = { danceability, energy, acousticness, instrumentalness, liveness, speechiness, valence }
+    dispatch(gotSinglePlaylist(playlist))
   } catch (error) {
     console.error(error)
   }

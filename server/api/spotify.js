@@ -196,5 +196,16 @@ router.get('/playlist/:id', async (req, res) => {
   }
 })
 
+router.post('/playlistDetail', async (req, res) => {
+  try {
+    let result = await spotifyWebApi.getAudioFeaturesForTracks(req.body)
+    res.status(200).send(result.body)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+
+
 
 module.exports = router;
