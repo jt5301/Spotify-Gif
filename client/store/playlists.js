@@ -93,7 +93,6 @@ export default function (state = allPlaylists, action) {
     case GOT_SINGLE_PLAYLIST:
       return { ...state, singlePlaylist: action.singlePlaylist }
     case RECOMMENDED_SONGS:
-      console.log('in store', action.newPlaylist)
       return { ...state, newPlaylist: action.newPlaylist }
     default:
       return state

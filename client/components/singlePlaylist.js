@@ -2,8 +2,9 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { CategoryFont } from '../../public/styling/fonts'
 import styled from 'styled-components'
-import { getSinglePlaylist, recSongs } from '../store/playlists'
+import { getSinglePlaylist } from '../store/playlists'
 import { HorizontalBar } from 'react-chartjs-2'
+import { NavLink } from 'react-router-dom'
 
 const SinglePlaylist = (props) => {
 
@@ -15,7 +16,7 @@ const SinglePlaylist = (props) => {
 
   const playlistInfo = playlist ? playlist.info : []
   const playlistSongs = playlist ? playlist.tracks.items : []
-  const recommendSongs = (songs) => dispatch(recSongs(songs))
+  // const recommendSongs = (songs) => dispatch(recSongs(songs))
 
 
 
@@ -94,7 +95,10 @@ const SinglePlaylist = (props) => {
                   }
                 }}
               />
-              <button onClick={() => { recommendSongs(playlistSongs) }} >Get a Recommended Playlist</button>
+              <NavLink to={{
+                pathname: '/recommendedSongs',
+                songs: { playlistSongs }
+              }}>Get a Recommended Playlist</NavLink>
             </div>
           </div>
 
