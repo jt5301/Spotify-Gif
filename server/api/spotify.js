@@ -205,6 +205,19 @@ router.post('/playlistDetail', async (req, res) => {
   }
 })
 
+router.post('/recommendedTracks', async (req, res) => {
+  try {
+    let tracks = await spotifyWebApi.getRecommendations(
+      {
+        seed_tracks: req.body
+      }
+    )
+    res.status(200).send(tracks.body)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 
 
 

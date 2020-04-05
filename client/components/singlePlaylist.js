@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { CategoryFont } from '../../public/styling/fonts'
 import styled from 'styled-components'
-import { getSinglePlaylist } from '../store/playlists'
+import { getSinglePlaylist, recSongs } from '../store/playlists'
 import { HorizontalBar } from 'react-chartjs-2'
 
 const SinglePlaylist = (props) => {
@@ -14,10 +14,16 @@ const SinglePlaylist = (props) => {
   const playlist = useSelector(state => state.playlists.singlePlaylist)
 
   const playlistInfo = playlist ? playlist.info : []
-  console.log(playlist)
+  const playlistSongs = playlist ? playlist.tracks.items : []
+  const recommendSongs = (songs) => dispatch(recSongs(songs))
+
+
+
   useEffect(() => {
     dispatch(getSinglePlaylist(playlistId))
   }, [])
+
+
   const chartData = {
     labels: ['acousticness', 'danceability', 'energy', 'instrumentalness', 'liveness', 'speechiness', 'valence'],
     datasets: [{
@@ -56,7 +62,7 @@ const SinglePlaylist = (props) => {
           }}>
             <div className='playlistProfile'>
               <img className='profileProtrait'
-                src={playlist.images[1].url}
+                src={playlist.images[1] ? playlist.images[1].url : playlist.images[0].url}
               />
               <h1>{playlist.name}</h1>
               <h4 style={{
@@ -88,7 +94,7 @@ const SinglePlaylist = (props) => {
                   }
                 }}
               />
-              <div>Get a Recommended Playlist</div>
+              <button onClick={() => { recommendSongs(playlistSongs) }} >Get a Recommended Playlist</button>
             </div>
           </div>
 

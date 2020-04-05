@@ -6,6 +6,7 @@ import history from '../history'
  */
 const GOT_PLAYLISTS = 'GOT_PLAYLISTS'
 const GOT_SINGLE_PLAYLIST = 'GOT_SINGLE_PLAYLIST'
+const RECOMMENDED_SONGS = 'RECOMMENDED_SONGS'
 
 /**
  * INITIAL STATE
@@ -19,6 +20,11 @@ const gotPlaylists = playlists => ({ type: GOT_PLAYLISTS, playlists })
 
 const gotSinglePlaylist = singlePlaylist => ({ type: GOT_SINGLE_PLAYLIST, singlePlaylist })
 
+const recommendedPlaylist = newPlaylist => ({
+  type: RECOMMENDED_SONGS,
+  newPlaylist
+})
+
 /**
  * THUNK CREATORS
  */
@@ -29,6 +35,22 @@ export const getPlaylists = () => async dispatch => {
     dispatch(gotPlaylists(res.data.items || defaultUser))
   } catch (err) {
     console.error(err)
+  }
+}
+
+export const recSongs = (songs) => async dispatch => {
+  try {
+    let seedTracks = []
+    songs.forEach((current) => {
+      seedTracks.push(current.track.id)
+    })
+
+    if (seedTracks.length > 5) seedTracks.splice(5, seedTracks.length - 5)
+
+    let recdSongs = await axios.post('/api/spotify/recommendedTracks', seedTracks)
+    dispatch(recommendedPlaylist(recdSongs.data.tracks))
+  } catch (error) {
+    console.log(error)
   }
 }
 
@@ -70,6 +92,9 @@ export default function (state = allPlaylists, action) {
       return { ...state, allPlaylists: action.playlists }
     case GOT_SINGLE_PLAYLIST:
       return { ...state, singlePlaylist: action.singlePlaylist }
+    case RECOMMENDED_SONGS:
+      console.log('in store', action.newPlaylist)
+      return { ...state, newPlaylist: action.newPlaylist }
     default:
       return state
   }
