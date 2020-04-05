@@ -54,7 +54,7 @@ export const getSinglePlaylist = (id) => async dispatch => {
       speechiness += current.speechiness
       valence += current.valence
     })
-    playlist.info = { danceability, energy, acousticness, instrumentalness, liveness, speechiness, valence }
+    playlist.info = [acousticness, danceability, energy, instrumentalness, liveness, speechiness, valence]
     dispatch(gotSinglePlaylist(playlist))
   } catch (error) {
     console.error(error)

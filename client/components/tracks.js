@@ -16,9 +16,7 @@ const Tracks = () => {
     margin: 10px 10px 10px 10px;
     &:hover{
       text-decoration: underline;
-  }
-
-  `
+      }`
 
 
   const tracks = useSelector(state => state.tracks.topTracks)
