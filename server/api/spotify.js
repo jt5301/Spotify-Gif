@@ -218,5 +218,27 @@ router.post('/recommendedTracks', async (req, res) => {
   }
 })
 
+router.post('/createEmptyPlaylist', async (req, res) => {
+  try {
+    let userId = req.body.userId
+    let playlistName = req.body.playlistName
+    let newList = await spotifyWebApi.createPlaylist(userId, `Music based on ${playlistName}`)
+    res.status(200).send(newList.body.id)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+router.post('/addToPlaylist', async (req, res) => {
+  try {
+
+    await spotifyWebApi.addTracksToPlaylist(req.body.playlistId, req.body.tracksToAdd)
+    res.status(200).send('success')
+  } catch (error) {
+    console.log(error)
+  }
+
+})
+
 
 module.exports = router;

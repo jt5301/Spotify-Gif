@@ -38,13 +38,30 @@ export const getPlaylists = () => async dispatch => {
   }
 }
 
+export const addPlaylist = (userId, playlistName, tracks) => async dispatch => {
+  try {
+    const res = await axios.post('/api/spotify/createEmptyPlaylist', { userId, playlistName })
+
+    let tracksToAdd = []
+    let moddedTrack
+    tracks.forEach((current) => {
+      moddedTrack = `spotify:track:${current.id}`
+      tracksToAdd.push(moddedTrack)
+    })
+    let playlistId = res.data
+    await axios.post('/api/spotify/addToPlaylist', { playlistId, tracksToAdd })
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const recSongs = (songs) => async dispatch => {
   try {
     let seedTracks = []
     songs.forEach((current) => {
       seedTracks.push(current.track.id)
     })
-
     if (seedTracks.length > 5) seedTracks.splice(5, seedTracks.length - 5)
 
     let recdSongs = await axios.post('/api/spotify/recommendedTracks', seedTracks)

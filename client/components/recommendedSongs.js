@@ -2,19 +2,20 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { CategoryFont } from '../../public/styling/fonts'
 import styled from 'styled-components'
-import { recSongs } from '../store/playlists'
+import { recSongs, addPlaylist } from '../store/playlists'
 
 
 const RecommendedSongs = (props) => {
   const dispatch = useDispatch()
-
   useEffect(() => {
     dispatch(recSongs(props.location.songs.playlistSongs))
   }, [])
 
   const tracks = useSelector(state => state.playlists.newPlaylist)
-
-
+  const playlistName = props.location.playlistName
+  const userId = props.location.userId
+  const addSongs = (userId, playlistName, tracks) => dispatch(addPlaylist(userId, playlistName, tracks))
+  console.log(props)
   const SingleTrack = styled.a`
   display: grid;
   justify-content: space-evenly;
@@ -29,7 +30,14 @@ const RecommendedSongs = (props) => {
   return (
     <main>
       <div>
+        <header className='categoryHeader'>
+          <CategoryFont>Recommended Tracks</CategoryFont>
+          <div className='timebar'>
+            <button onClick={() => addSongs(userId, playlistName, tracks)}>Add To Playlist</button>
+          </div>
+        </header>
         <div className='trackList'>
+
           <div style={{
             display: 'grid',
             justifyContent: 'space-evenly',

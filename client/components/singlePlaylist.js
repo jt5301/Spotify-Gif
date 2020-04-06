@@ -13,12 +13,10 @@ const SinglePlaylist = (props) => {
   const dispatch = useDispatch()
 
   const playlist = useSelector(state => state.playlists.singlePlaylist)
-
+  console.log(playlist)
   const playlistInfo = playlist ? playlist.info : []
   const playlistSongs = playlist ? playlist.tracks.items : []
   // const recommendSongs = (songs) => dispatch(recSongs(songs))
-
-
 
   useEffect(() => {
     dispatch(getSinglePlaylist(playlistId))
@@ -97,7 +95,9 @@ const SinglePlaylist = (props) => {
               />
               <NavLink to={{
                 pathname: '/recommendedSongs',
-                songs: { playlistSongs }
+                songs: { playlistSongs },
+                playlistName: playlist.name,
+                userId: playlist.owner.id
               }}>Get a Recommended Playlist</NavLink>
             </div>
           </div>
