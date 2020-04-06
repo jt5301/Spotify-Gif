@@ -16,6 +16,7 @@ const Profile = () => {
 
   const profile = useSelector(state => state.user.userProfile)
   const playlists = useSelector(state => state.playlists.allPlaylists)
+  console.log(profile)
   /* analogous to :
   const mapState = state => {
   return {
@@ -29,7 +30,7 @@ const Profile = () => {
       <div>
         <div className='profile' >
           <img className='profilePortrait'
-            src={profile ? profile.images[0].url : ''} />
+            src={profile ? (profile.images.length != 0 ? profile.images[0].url : 'https://i.kym-cdn.com/photos/images/facebook/000/151/750/LOLchu.png') : 'https://i.kym-cdn.com/photos/images/facebook/000/151/750/LOLchu.png'} />
         </div>
 
         <div className='profile' >
