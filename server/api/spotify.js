@@ -178,6 +178,25 @@ router.get('/artist/:id', async (req, res) => {
   }
 })
 
+router.get('/artistTopSongs/:id', async (req, res) => {
+  try {
+    let result = await spotifyWebApi.getArtistTopTracks(req.params.id, 'US')
+    res.status(200).send(result.body)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+router.get('/relatedArtists/:id', async (req, res) => {
+  try {
+    let result = await spotifyWebApi.getArtistRelatedArtists(req.params.id)
+    res.status(200).send(result.body)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+
 router.get('/track/:id', async (req, res) => {
   try {
     let result = await spotifyWebApi.getTrack(req.params.id)
@@ -231,7 +250,6 @@ router.post('/createEmptyPlaylist', async (req, res) => {
 
 router.post('/addToPlaylist', async (req, res) => {
   try {
-
     await spotifyWebApi.addTracksToPlaylist(req.body.playlistId, req.body.tracksToAdd)
     res.status(200).send('success')
   } catch (error) {
@@ -239,6 +257,5 @@ router.post('/addToPlaylist', async (req, res) => {
   }
 
 })
-
 
 module.exports = router;

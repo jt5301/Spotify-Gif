@@ -60,7 +60,7 @@ const SinglePlaylist = (props) => {
             justifyContent: 'center',
           }}>
             <div className='playlistProfile'>
-              <img className='profileProtrait'
+              <img className='profilePortrait'
                 src={playlist.images[1] ? playlist.images[1].url : playlist.images[0].url}
               />
               <h1>{playlist.name}</h1>

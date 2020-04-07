@@ -33,7 +33,6 @@ export const getTracks = (limit, time) => async dispatch => {
 export const getSingleTrack = (id) => async dispatch => {
   try {
     const res = await axios.get(`/api/spotify/track/${id}`)
-    console.log(res.data)
     dispatch(gotSingleTrack(res.data))
   } catch (error) {
     console.log(error)
