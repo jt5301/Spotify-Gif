@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { HeaderFont } from '../../public/styling/fonts'
 import styled from 'styled-components'
-import { getSingleArtist } from '../store/artists'
+import { getSingleArtist, getRecommendedSongs, getRecommendedArtists } from '../store/artists'
 
 const ArtistProfile = (props) => {
   const artistId = props.match.params.id
@@ -10,11 +10,23 @@ const ArtistProfile = (props) => {
   const dispatch = useDispatch()
 
   const artist = useSelector(state => state.artists.singleArtist)
+  const recommendedSongs = useSelector(state => state.artists.recdSongs)
+  const recommendedArtists = useSelector(state => state.artists.recdArtists)
+
+
   useEffect(() => {
     dispatch(getSingleArtist(artistId))
+    dispatch(getRecommendedArtists(artistId))
+    dispatch(getRecommendedSongs(artistId))
   }, [])
 
-  console.log(artist)
+  const SingleItem = styled.a`
+  color:white;
+  &:hover{
+      text-decoration: underline;
+      }`
+
+  console.log('recommendedsongs&artists', recommendedSongs, recommendedArtists)
   return (
     <main>
       <div>
@@ -37,37 +49,36 @@ const ArtistProfile = (props) => {
           }}>
             {artist ? artist.genres.map((current) => {
 
-              return (<p className='artistCategories' key={current}>{current}</p>)
+              return (<p key={current}>{current}</p>)
             }) : ''}
           </ul>
         </div>
-        <p>Similar Artists</p>
-        <p>Top Songs</p>
-      </div>
 
-      {/* <div className='profileRow' >
+        <div className='artistCategories'>Similar Artists in the U.S:
         <ul style={{
-          listStyleType: 'none',
-          textTransform: 'capitalize'
-        }}>
-          {artist ? artist.genres.map((current) => {
+            textTransform: 'capitalize',
+            paddingLeft: 0
+          }}>
+            {recommendedArtists ? recommendedArtists.map((current) => {
 
-            return (<li key={current}>{current}</li>)
-          }) : ''}
-        </ul>
-        <ul>Similar Artists</ul>
-        <ul>Top Songs</ul>
-      </div> */}
+              return (<p><SingleItem href = {`/artist/${current.id}`} key={current.id}>{current.name}</SingleItem></p>)
+            }) : ''}
+          </ul>
+        </div>
 
-
+        <div className='artistCategories'>Top Songs:
+        <ul style={{
+            textTransform: 'capitalize',
+            paddingLeft: 0,
+            // width:'150px'
+          }}>
+            {recommendedSongs ? recommendedSongs.map((current) => {
+              return (<p><SingleItem href = {`/track/${current.id}`} key={current.id}>{current.name}</SingleItem></p>)
+            }) : ''}
+          </ul>
+        </div>
+      </div>
     </main >)
-  // const dispatch = useDispatch()
-
-  // const artistProfile = useSelector(state => state.artists.SingleArtist)
-
-  // useEffect(() => {
-  //   dispatch(getSingleArtist(props.artist))
-  // })
 }
 
 export default ArtistProfile
