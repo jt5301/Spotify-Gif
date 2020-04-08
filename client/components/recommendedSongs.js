@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { CategoryFont } from '../../public/styling/fonts'
+import { CategoryFont, TimeButtons } from '../../public/styling/fonts'
 import styled from 'styled-components'
 import { recSongs, addPlaylist } from '../store/playlists'
 
@@ -33,7 +33,7 @@ const RecommendedSongs = (props) => {
         <header className='categoryHeader'>
           <CategoryFont>Recommended Tracks</CategoryFont>
           <div className='timebar'>
-            <button onClick={() => addSongs(userId, playlistName, tracks)}>Add To Playlist</button>
+            <TimeButtons onClick={() => addSongs(userId, playlistName, tracks)}>Add To Playlist</TimeButtons>
           </div>
         </header>
         <div className='trackList'>

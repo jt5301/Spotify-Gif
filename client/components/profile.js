@@ -5,7 +5,7 @@ import { getInfo, } from '../store/user'
 import { getPlaylists } from '../store/playlists'
 import TopArtistsProfView from './topArtistsProfView'
 import TopTracksProfView from './topTracksProfView'
-import { HeaderFont } from '../../public/styling/fonts'
+import { HeaderFont, MainButton } from '../../public/styling/fonts'
 
 /**
  * COMPONENT

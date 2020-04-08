@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { getTracks } from '../store/tracks'
-import { CategoryFont } from '../../public/styling/fonts'
+import { CategoryFont, TimeButtons } from '../../public/styling/fonts'
 import styled from 'styled-components'
 
 const Tracks = () => {
@@ -28,9 +28,9 @@ const Tracks = () => {
       <header className='categoryHeader'>
         <CategoryFont>Top Tracks</CategoryFont>
         <div className='timebar'>
-          <button onClick={() => dispatch(getTracks(50, 'long_term'))}>All Time</button>
-          <button onClick={() => dispatch(getTracks(50, 'medium_term'))}>Last Six Months</button>
-          <button onClick={() => dispatch(getTracks(50, 'short_term'))}>Last Four Weeks</button>
+          <TimeButtons onClick={() => dispatch(getTracks(50, 'long_term'))}>All Time</TimeButtons>
+          <TimeButtons onClick={() => dispatch(getTracks(50, 'medium_term'))}>Last Six Months</TimeButtons>
+          <TimeButtons onClick={() => dispatch(getTracks(50, 'short_term'))}>Last Four Weeks</TimeButtons>
         </div>
       </header>
       <div>

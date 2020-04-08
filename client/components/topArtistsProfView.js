@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { getArtists } from '../store/artists'
 import styled from 'styled-components'
+import { MainButton } from '../../public/styling/fonts'
 
 const TopArtistsProfView = () => {
   const dispatch = useDispatch()

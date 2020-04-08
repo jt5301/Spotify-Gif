@@ -188,12 +188,14 @@ form div {
 }
 
 .seeMore{
-  color:white;
-  font-size: 15px;
+  color:grey;
+  font-size: 16px;
 
 }
+
 .seeMore:hover{
-  text-decoration: underline  ;
+  color:white ;
+  transition: .3s;
 }
 
 .topArtists{
