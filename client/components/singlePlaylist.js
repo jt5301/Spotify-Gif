@@ -93,7 +93,7 @@ const SinglePlaylist = (props) => {
                   }
                 }}
               />
-              <NavLink to={{
+              <NavLink className='seeMore' to={{
                 pathname: '/recommendedSongs',
                 songs: { playlistSongs },
                 playlistName: playlist.name,

@@ -43,7 +43,7 @@ router.get('/login', function (req, res) {
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
   // your application requests authorization
-  var scope = 'user-top-read user-read-private playlist-modify-public playlist-modify-private playlist-read-private user-follow-read';
+  var scope = 'user-top-read user-read-private playlist-modify-public playlist-modify-private playlist-read-private playlist-read-collaborative user-follow-read';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -122,7 +122,7 @@ router.get('/userinfo', async (req, res) => {
 
 router.get('/playlists', async (req, res) => {
   try {
-    var result = await spotifyWebApi.getUserPlaylists();
+    var result = await spotifyWebApi.getUserPlaylists({ limit: 50 });
     res.status(200).send(result.body);
   } catch (err) {
     res.status(400).send(err)
@@ -163,6 +163,7 @@ router.get('/topTracks/:time/:limit', async (req, res) => {
 router.get('/playlists', async (req, res) => {
   try {
     let result = await spotifyWebApi.getUserPlaylists()
+    console.log(result.body)
     res.status(200).send(result.body)
   } catch (error) {
     console.log(error)

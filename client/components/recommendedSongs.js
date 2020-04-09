@@ -14,7 +14,15 @@ const RecommendedSongs = (props) => {
   const tracks = useSelector(state => state.playlists.newPlaylist)
   const playlistName = props.location.playlistName
   const userId = props.location.userId
-  const addSongs = (userId, playlistName, tracks) => dispatch(addPlaylist(userId, playlistName, tracks))
+
+  const addSongs = (userId, playlistName, tracks) => {
+
+    dispatch(addPlaylist(userId, playlistName, tracks))
+    let button = document.getElementById('button')
+    console.log(button)
+    button.innerHTML = 'Added'
+    button.disabled = 'true'
+  }
   console.log(props)
   const SingleTrack = styled.a`
   display: grid;
@@ -33,7 +41,7 @@ const RecommendedSongs = (props) => {
         <header className='categoryHeader'>
           <CategoryFont>Recommended Tracks</CategoryFont>
           <div className='timebar'>
-            <TimeButtons onClick={() => addSongs(userId, playlistName, tracks)}>Add To Playlist</TimeButtons>
+            <TimeButtons id='button' onClick={() => addSongs(userId, playlistName, tracks)}>Add To Playlist</TimeButtons>
           </div>
         </header>
         <div className='trackList'>

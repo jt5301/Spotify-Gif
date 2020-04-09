@@ -20,6 +20,7 @@ const Profile = () => {
   const mapState = state => {
   return {
   state: state.user.state   }*/
+  console.log(profile, playlists)
   useEffect(() => {
     dispatch(getInfo())
     dispatch(getPlaylists())
@@ -36,30 +37,31 @@ const Profile = () => {
           <HeaderFont>{profile ? profile.display_name : ''}</HeaderFont>
         </div>
 
-        <div className='profile'>
-          <a href='https://accounts.spotify.com/en/status'>LOGOUT</a>
+      </div>
+      <div style={{ paddingBottom: '20px' }}>
+        <div className='profileRow'>
+          <div className='artistCategories'>Followers
+            <div>{profile ? profile.followers.total : ''}</div>
+          </div>
+          <div className='artistCategories'>Follows
+          <div>{profile ? profile.follows.artists.items.length : ''}</div>
+          </div>
+          <div className='artistCategories'>Playlists
+            <div>
+              {playlists ? playlists.length : ''}
+            </div>
+          </div>
         </div>
-
       </div>
 
-      <div className='profileRow'>
-        <p>{playlists ? playlists.length : ''}</p>
-        <p>{profile ? profile.followers.total : ''}</p>
-        <p>{profile ? profile.follows.artists.items.length : ''}</p>
-      </div>
-
-      <div className='profileRow'>
-        <p>Playlists</p>
-        <p>Followers</p>
-        <p>Following</p>
-
-      </div>
       <div className='profTrackArtistView'>
         <TopArtistsProfView />
         <TopTracksProfView />
-
       </div>
 
+      <div className='profile'>
+        <a href='https://accounts.spotify.com/en/status'>LOGOUT</a>
+      </div>
 
     </main>
   )
