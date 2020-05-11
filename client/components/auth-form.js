@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 // import { login } from '../store'
+import { MainButton } from '../../public/styling/fonts'
 
 /**
  * COMPONENT
@@ -12,7 +13,7 @@ const AuthForm = props => {
   return (
     <div>
       <form className='login' onSubmit={handleSubmit} name={name}>
-        <a type='submit' href="/api/spotify/login">Log into your Spotify account</a>
+        <a href="/api/spotify/login">Log into your Spotify account</a>
       </form>
     </div>
   )
