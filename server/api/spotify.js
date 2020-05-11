@@ -13,9 +13,9 @@ const client_secret = process.env.client_secret;
 const redirect_uri = process.env.redirect_uri;
 
 var spotifyWebApi = new spotify({
-  clientId: process.env.client_id,
-  clientSecret: process.env.client_secret,
-  redirectUri: process.env.redirect_uri,
+  clientId: client_id,
+  clientSecret: client_secret,
+  redirectUri: redirect_uri,
 });
 
 /**

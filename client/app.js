@@ -6,7 +6,6 @@ import Routes from './routes'
 
 const App = () => {
   const user = useSelector(state => state.user)
-  console.log('hello', user)
   return (
     <div >
       {user.userProfile ? <Navbar /> : ''}
