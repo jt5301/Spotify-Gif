@@ -11,10 +11,9 @@ const AuthForm = props => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} name={name}>
+      <form className='login' onSubmit={handleSubmit} name={name}>
         <a type='submit' href="/api/spotify/login">Log into your Spotify account</a>
       </form>
-
     </div>
   )
 }

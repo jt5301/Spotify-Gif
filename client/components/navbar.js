@@ -65,7 +65,7 @@ padding-inline-start: 0px;
 
 const Navbar = () => (
   <Nav>
-    <Button>test</Button>
+    <Button>Main Placeholder</Button>
     <MainNav>
 
       <MenuItem>
@@ -93,7 +93,7 @@ const Navbar = () => (
       </MenuItem>
 
     </MainNav>
-    <Button>test</Button>
+    <Button href='https://github.com/jt5301'>Github Placeholder</Button>
   </Nav>
 );
 

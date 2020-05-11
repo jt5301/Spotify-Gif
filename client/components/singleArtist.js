@@ -61,7 +61,7 @@ const ArtistProfile = (props) => {
           }}>
             {recommendedArtists ? recommendedArtists.map((current) => {
 
-              return (<p><SingleItem href = {`/artist/${current.id}`} key={current.id}>{current.name}</SingleItem></p>)
+              return (<p><SingleItem href={`/artist/${current.id}`} key={current.id}>{current.name}</SingleItem></p>)
             }) : ''}
           </ul>
         </div>
@@ -73,7 +73,7 @@ const ArtistProfile = (props) => {
             // width:'150px'
           }}>
             {recommendedSongs ? recommendedSongs.map((current) => {
-              return (<p><SingleItem href = {`/track/${current.id}`} key={current.id}>{current.name}</SingleItem></p>)
+              return (<p><SingleItem href={`/track/${current.id}`} key={current.id}>{current.name}</SingleItem></p>)
             }) : ''}
           </ul>
         </div>
