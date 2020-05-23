@@ -110,7 +110,6 @@ var App = function App() {
   var user = Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["useSelector"])(function (state) {
     return state.user;
   });
-  console.log('run here');
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, user ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components__WEBPACK_IMPORTED_MODULE_2__["Navbar"], null) : '', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_routes__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
@@ -1362,9 +1361,6 @@ var Routes = /*#__PURE__*/function (_Component) {
     value: function render() {
       var isLoggedIn = this.props.isLoggedIn;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-        path: "/login",
-        component: _components__WEBPACK_IMPORTED_MODULE_3__["Login"]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/profile",
         component: _components__WEBPACK_IMPORTED_MODULE_3__["Profile"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
@@ -1388,6 +1384,9 @@ var Routes = /*#__PURE__*/function (_Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         path: "/RecommendedSongs",
         component: _components__WEBPACK_IMPORTED_MODULE_3__["RecommendedSongs"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+        path: "/",
+        component: _components__WEBPACK_IMPORTED_MODULE_3__["Login"]
       }));
     }
   }]);

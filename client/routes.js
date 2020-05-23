@@ -17,7 +17,6 @@ class Routes extends Component {
     return (
       <Switch >
         {/* Routes placed here are available to all visitors */}
-        <Route path="/login" component={Login} />
         <Route path="/profile" component={Profile} />
         <Route path='/artists' component={Artists} />
         <Route path='/artist/:id' component={ArtistProfile} />
@@ -26,6 +25,7 @@ class Routes extends Component {
         <Route path='/playlists' component={Playlists} />
         <Route path='/playlist/:id' component={SinglePlaylist} />
         <Route path='/RecommendedSongs' component={RecommendedSongs} />
+        <Route path="/" component={Login} />
       </Switch>
     )
   }
