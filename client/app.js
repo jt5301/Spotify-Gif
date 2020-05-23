@@ -8,7 +8,7 @@ const App = () => {
   const user = useSelector(state => state.user)
   return (
     <div >
-      {user.userProfile ? <Navbar /> : ''}
+      {user ? <Navbar /> : ''}
       {/* <Navbar /> */}
       <Routes />
     </div>

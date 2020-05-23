@@ -26,15 +26,6 @@ class Routes extends Component {
         <Route path='/playlists' component={Playlists} />
         <Route path='/playlist/:id' component={SinglePlaylist} />
         <Route path='/RecommendedSongs' component={RecommendedSongs} />
-        {/* {isLoggedIn && (
-          <Switch>
-            {/* Routes placed here are only available after logging in */}
-        {/* <Route path="/profile" component={profile} />
-
-          </Switch>
-        )}
-        Displays our Login component as a fallback */} */}
-        <Route component={Login} />
       </Switch>
     )
   }

@@ -14,7 +14,7 @@ const TrackProfile = (props) => {
   useEffect(() => {
     dispatch(getSingleTrack(trackId))
   }, [])
-  console.log('what is this', track)
+
   return (
     <main>
       <div style={{

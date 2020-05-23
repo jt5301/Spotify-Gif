@@ -19,11 +19,11 @@ const RecommendedSongs = (props) => {
 
     dispatch(addPlaylist(userId, playlistName, tracks))
     let button = document.getElementById('button')
-    console.log(button)
+
     button.innerHTML = 'Added'
     button.disabled = 'true'
   }
-  console.log(props)
+
   const SingleTrack = styled.a`
   display: grid;
   justify-content: space-evenly;

@@ -20,7 +20,7 @@ const Profile = () => {
   const mapState = state => {
   return {
   state: state.user.state   }*/
-  console.log(profile, playlists)
+
   useEffect(() => {
     dispatch(getInfo())
     dispatch(getPlaylists())

@@ -13,7 +13,7 @@ const SinglePlaylist = (props) => {
   const dispatch = useDispatch()
 
   const playlist = useSelector(state => state.playlists.singlePlaylist)
-  console.log(playlist)
+
   const playlistInfo = playlist ? playlist.info : []
   const playlistSongs = playlist ? playlist.tracks.items : []
   // const recommendSongs = (songs) => dispatch(recSongs(songs))

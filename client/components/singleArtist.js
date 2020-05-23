@@ -26,7 +26,7 @@ const ArtistProfile = (props) => {
       text-decoration: underline;
       }`
 
-  console.log('recommendedsongs&artists', recommendedSongs, recommendedArtists)
+
   return (
     <main>
       <div>

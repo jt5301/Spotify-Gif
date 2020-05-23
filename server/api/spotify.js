@@ -163,7 +163,7 @@ router.get('/topTracks/:time/:limit', async (req, res) => {
 router.get('/playlists', async (req, res) => {
   try {
     let result = await spotifyWebApi.getUserPlaylists()
-    console.log(result.body)
+
     res.status(200).send(result.body)
   } catch (error) {
     console.log(error)
